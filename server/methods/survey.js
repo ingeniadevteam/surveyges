@@ -1,6 +1,9 @@
 Meteor.methods({
   submitEncIni:function(answer){
     console.log(answer);
-    console.log("Hey from server: "+answer.q2);
+    var test = JSON.stringify(answer);
+    console.log(test);
+
+    Answers.insert(answer);
   }
 });
