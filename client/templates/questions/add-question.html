@@ -6,11 +6,23 @@
           <h4 class="modal-title">Nueva Pregunta</h4>
         </div>
         <div class="modal-body">
-          <div ><label for="question">Pregunta:</label></div>
-          <div ><input type="text" id="question"/></div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" id="add">Añadir</button>
+          <!--
+          <div class="row">
+            <div class="col-xs-12 col-md-8"><label for="question">Pregunta:</label></div>
+            <div class="col-xs-12 col-md-8"><input type="text" id="question" class="form-control"/></div>
+            <div class="col-xs-12 col-md-8"><label for="options">Opciones:</label></div>
+            <div class="col-xs-12 col-md-8"><textarea class="form-control" rows="5" id="options"></textarea></div>
+          </div>
+        -->
+        {{#autoForm collection="Answers" id="addLineForm" type="method" meteormethod="addAnswer"}}
+          <fieldset>
+            <legend>Add a Bussines Line</legend>
+            {{> afQuickField name='name'}}
+            {{> afQuickField name='options'}}
+          </fieldset>
+          <button type="submit" class="btn btn-primary">Añadir</button>
+          <button class="btn btn-default" id="cancelAdd" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+        {{/autoForm}}
         </div>
       </div>
     </div>

@@ -3,14 +3,16 @@
     <fieldset>
       <legend>Nueva Encuesta</legend>
         {{> afQuickField name='name'}}
+        {{> afQuickField name='answers'}}
     </fieldset>
-    <button class="btn btn-primary" id="add">Añadir Pregunta</button>
+    <!-- <button class="btn btn-primary" id="add">Añadir Pregunta</button> -->
+    <hr>
     <button type="submit" class="btn btn-primary">Crear</button>
+    <button class="btn btn-danger">Volver</button>
 
 
   {{/autoForm}}
-  <hr>
-  <button class="btn btn-danger">Volver</button>
+
   <!-- TEMPLATE MODAL ADD QUESTION-->
   {{>questionModalTemplate}}
 </template>
