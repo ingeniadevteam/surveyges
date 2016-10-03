@@ -1,0 +1,16 @@
+<template name="surveyAdd">
+  {{#autoForm collection="Surveys" id="addSurveyForm" type="method" meteormethod="surveyAdd"}}
+    <fieldset>
+      <legend>Nueva Encuesta</legend>
+        {{> afQuickField name='name'}}
+    </fieldset>
+    <button class="btn btn-primary" id="add">Añadir Pregunta</button>
+    <button type="submit" class="btn btn-primary">Crear</button>
+
+
+  {{/autoForm}}
+  <hr>
+  <button class="btn btn-danger">Volver</button>
+  <!-- TEMPLATE MODAL ADD QUESTION-->
+  {{>questionModalTemplate}}
+</template>

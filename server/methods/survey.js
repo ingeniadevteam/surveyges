@@ -5,5 +5,9 @@ Meteor.methods({
     console.log(test);
 
     Answers.insert(answer);
+  },
+  surveyAdd:function(survey){
+
+    console.log('insertada');
   }
 });

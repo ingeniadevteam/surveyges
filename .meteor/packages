@@ -22,3 +22,5 @@ twbs:bootstrap
 iron:router
 sacha:spin
 aldeed:autoform
+aslagle:reactive-table
+aldeed:collection2
