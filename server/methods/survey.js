@@ -8,13 +8,11 @@ Meteor.methods({
   },
   surveyAdd:function(survey){
 
-    console.log(JSON.stringify(survey.answers[x]));
     //insert all answers
-    for(var x in survey.answers) Answers.insert(survey.answers[x])
+    for(var x in survey.questions) Questions.insert(survey.questions[x])
 
     Surveys.insert(survey);
     console.log('Encuesta insertada');
-
 
   }
 });

@@ -1,0 +1,13 @@
+<Template name="surveyShow">
+  <h1>{{name}}</h1>
+  {{#autoForm collection="Answers" id="submitSurvey" type="method" meteormethod="answerAdd"}}
+    <fieldset>
+      {{#each answers}}
+        <legend>{{name}}</legend>
+        {{> afQuickField name='answer' options=optionsList}}
+      {{/each}}
+    </fieldset>
+    <button type="submit" class="btn btn-info">Submit</button>
+    <button class="btn btn-danger">Volver</button>
+  {{/autoForm}}
+</Template>

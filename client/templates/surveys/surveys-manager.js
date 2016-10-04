@@ -10,8 +10,18 @@ Template.surveysList.helpers({
               key: 'name',
               label: 'Nombre Encuesta',
               sortable: false
+            },{
+              key: '_id',
+              label: 'Acciones',
+              sortable: false,
+              fn: function (id) {
+                console.log("ver encuesta");
+                return new Spacebars.SafeString('<a href="/encuesta/'+id+'/mostrar" class="btn btn-primary" enabled>Ver Encuesta</a>'+
+                                                '    <a href="/encuesta/'+id+'/editar" class="btn btn-success" enabled>Editar Encuesta</a>'+
+                                                '    <a href="#" class="btn btn-danger" enabled>Borrar Encuesta</a>');
+              }
             }
           ]
-      };
+      }
   }
 });

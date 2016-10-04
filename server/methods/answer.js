@@ -1,6 +1,6 @@
 Meteor.methods({
-  addAnswer:function(answer){
-    console.log(answer);
-    Answers.insert(answer);
+  answerAdd:function(){
+    console.log("here 2");
+    //Answers.insert(answer);
   }
 });
