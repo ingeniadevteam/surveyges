@@ -1,5 +1,5 @@
 <Template name="surveyEdit">
-  {{#autoForm collection="Surveys" doc=this id="editSurveyForm" type="method" meteormethod="surveyEdit"}}
+  {{#autoForm collection="Surveys" doc=this id="editSurveyForm" type="method-update" meteormethod="surveyEdit"}}
       <fieldset>
         <legend>Nueva Encuesta</legend>
           {{> afQuickField name='name'}}
@@ -8,7 +8,7 @@
       <!-- <button class="btn btn-primary" id="add">Añadir Pregunta</button> -->
       <hr>
       <button type="submit" class="btn btn-primary">Actualizar</button>
-      <button class="btn btn-danger">Volver</button>
+      <a class="btn btn-danger">Volver</a>
     {{/autoForm}}
     <!-- TEMPLATE MODAL ADD QUESTION-->
     <!--{{>questionModalTemplate}}-->

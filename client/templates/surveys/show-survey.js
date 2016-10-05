@@ -1,15 +1,11 @@
 Template.surveyShow.events({
   "click .btn-danger": function(){
-    console.log('here');
+
     Router.go("/");
   }
 });
 
 Template.surveyShow.helpers({
-  unHelper: function(){
-    console.log(this._id);
-    return this._id;
-  },
   optionsList: function(){
     console.log("--");
     console.log(this.options);

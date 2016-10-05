@@ -13,6 +13,27 @@ Meteor.methods({
 
     Surveys.insert(survey);
     console.log('Encuesta insertada');
+  },
+  surveyDelete: function(survey){
 
+    var exists = Surveys.findOne({ _id: survey});
+
+    if (exists) {
+      Surveys.remove(exists);
+      console.log("Encuesta borrada: "+survey);
+    } else {
+      throw new Meteor.Error("La encuesta no existe");
+    }
+
+  },
+  surveyEdit: function(survey, id){
+    console.log(id);
+    var exists = Surveys.findOne({ _id: id});
+
+    if (exists) {
+      Surveys.update(id, survey);
+    } else {
+      throw new Meteor.Error("La encuesta no existe");
+    }
   }
 });
