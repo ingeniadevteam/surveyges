@@ -18,7 +18,8 @@ Template.surveysList.helpers({
                 console.log("ver encuesta");
                 return new Spacebars.SafeString('<a href="/encuesta/'+id+'/mostrar" class="btn btn-primary" enabled>Ver Encuesta</a>'+
                                                 '    <a href="/encuesta/'+id+'/editar" class="btn btn-success" enabled>Editar Encuesta</a>'+
-                                                '    <a href="#" id="'+id+'" name="remove" class="btn btn-danger" enabled>Borrar Encuesta</a>');
+                                                '    <a href="#" id="'+id+'" name="remove" class="btn btn-danger" enabled>Borrar Encuesta</a>' +
+                                                '    <a href="/encuesta/'+id+'/respuestas" class="btn btn-warning" enabled>Ver Respuestas</a>');
               }
             }
           ]

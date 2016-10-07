@@ -9,7 +9,7 @@ Meteor.methods({
   surveyAdd:function(survey){
 
     //insert all answers
-    for(var x in survey.questions) Questions.insert(survey.questions[x])
+    //for(var x in survey.questions) Questions.insert(survey.questions[x])
 
     Surveys.insert(survey);
     console.log('Encuesta insertada');
@@ -27,7 +27,15 @@ Meteor.methods({
 
   },
   surveyEdit: function(survey, id){
-    console.log(id);
+
+    //remove nulls from list of questions
+    for (var i in survey['$set'].questions){
+
+      if(survey['$set'].questions[i] === null){
+        survey['$set'].questions.splice(i,1);
+      }
+    }
+
     var exists = Surveys.findOne({ _id: id});
 
     if (exists) {
