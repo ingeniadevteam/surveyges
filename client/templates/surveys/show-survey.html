@@ -2,13 +2,13 @@
   <h1>{{name}}</h1>
   {{#autoForm collection="Answers" id="submitSurvey" type="method" meteormethod="answerAdd"}}
     <fieldset>
+      <a class="btn btn-success" data-toggle="collapse" href="#collapse1">Preguntas</a>
+      <div id="collapse1" class="collapse">
       {{#each questions}}
-        <legend>{{name}}</legend>
-        <a class="btn btn-success" data-toggle="collapse" href="#collapse1">Preguntas</a>
-        <div id="collapse1" class="collapse">
+        <legend>{{name}}</legend>        
         {{> afQuickField name='answer' options=optionsList}}
-        </div>
       {{/each}}
+      </div>
     </fieldset>
     <button type="submit" class="btn btn-info">Submit</button>
     <a class="btn btn-danger">Volver</a>
