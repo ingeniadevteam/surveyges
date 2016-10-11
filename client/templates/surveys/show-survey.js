@@ -15,10 +15,11 @@ Template.surveyShow.helpers({
   }
 });
 
+
 AutoForm.addHooks('submitSurvey', {
   // Called when any submit operation succeeds
   onSuccess: (formType, result) => {
-    Alert('success', 'success');
+    //Alert('success', 'success');
     Router.go('/');
    },
    // Called when any submit operation fails

@@ -5,8 +5,12 @@
       <a class="btn btn-success" data-toggle="collapse" href="#collapse1">Preguntas</a>
       <div id="collapse1" class="collapse">
       {{#each questions}}
-        <legend>{{name}}</legend>        
-        {{> afQuickField name='answer' options=optionsList}}
+        <legend>{{name}}</legend>
+        <!-- {{#afEachArrayItem name='answers'}} -->
+        {{# afEachArrayItem}}
+          {{> afArrayField options=optionsList name="answers"}}
+        {{/ afEachArrayItem}}
+        <!-- {{/afEachArrayItem}} -->
       {{/each}}
       </div>
     </fieldset>
