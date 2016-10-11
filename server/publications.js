@@ -9,3 +9,7 @@ Meteor.publish('surveys', function() {
 Meteor.publish('answers', function() {
   return Surveys.find();
 });
+
+Meteor.publish('schemas', function() {
+  return Schemas.find();
+});

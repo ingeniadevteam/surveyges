@@ -6,11 +6,7 @@
       <div id="collapse1" class="collapse">
       {{#each questions}}
         <legend>{{name}}</legend>
-        <!-- {{#afEachArrayItem name='answers'}} -->
-        {{# afEachArrayItem}}
-          {{> afArrayField options=optionsList name="answers"}}
-        {{/ afEachArrayItem}}
-        <!-- {{/afEachArrayItem}} -->
+        {{> afQuickField name='answer' options=optionsList}}
       {{/each}}
       </div>
     </fieldset>

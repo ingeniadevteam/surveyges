@@ -8,15 +8,21 @@ Meteor.methods({
   },
   surveyAdd:function(survey){
 
-    //insert all answers
-    //var schem = JSON.parse();
-
-    Meteor.call('createSchema', survey);
     //survey.schema = new SimpleSchema(schem);
     //for(var x in survey.questions) Questions.insert(survey.questions[x])
 
-    Surveys.insert(survey);
+    var enc = Surveys.insert(survey);
+    var s = Meteor.call('createSchema', survey);
+    console.log(s);
+    var insSchema = {
+      survey: enc,
+      schema: s
+    }
+
+    Schemas.insert(insSchema);
     console.log('Encuesta insertada');
+
+
   },
   surveyDelete: function(survey){
 

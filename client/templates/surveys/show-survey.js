@@ -7,6 +7,7 @@ Template.surveyShow.events({
 
 Template.surveyShow.helpers({
   optionsList: function(){
+    
     console.log("--");
     console.log(this.options);
     return this.options.map( (c) => {
