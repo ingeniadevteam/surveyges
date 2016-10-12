@@ -1,16 +1,20 @@
 <template name="surveyShow">
   <h1>{{name}}</h1>
-  {{#autoForm collection="Answers" id="submitSurvey" type="method" meteormethod="answerAdd"}}
+  {{> quickForm id="demo" schema=getSchema}}
+
+  <!--{{#autoForm schema=getSchema id="submitSurvey" type="method" meteormethod="answerAdd"}}
     <fieldset>
       <a class="btn btn-success" data-toggle="collapse" href="#collapse1">Preguntas</a>
+      {{> afQuickField name='preguntab1.options1'}}
       <div id="collapse1" class="collapse">
       {{#each questions}}
         <legend>{{name}}</legend>
-        {{> afQuickField name='answer' options=optionsList}}
+        {{> afQuickField name='pregunta01' options=optionsList}}
       {{/each}}
       </div>
     </fieldset>
     <button type="submit" class="btn btn-info">Submit</button>
     <a class="btn btn-danger">Volver</a>
   {{/autoForm}}
+-->
 </template>

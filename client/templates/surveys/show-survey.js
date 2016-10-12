@@ -7,12 +7,23 @@ Template.surveyShow.events({
 
 Template.surveyShow.helpers({
   optionsList: function(){
-    
+
     console.log("--");
     console.log(this.options);
     return this.options.map( (c) => {
       return { label: c, value: c };
     });
+  },
+  getSchema:function(){
+    //return this._id;
+  var schemaString = Schemas.findOne({survey: this._id});
+
+  var object = JSON.parse(schemaString.schema);
+  var jsonSchema = new JSONSchema(object);
+  var simpleSchema = jsonSchema.toSimpleSchema();
+  console.log(simpleSchema);
+  return simpleSchema;
+
   }
 });
 

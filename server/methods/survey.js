@@ -64,7 +64,7 @@ Meteor.methods({
       for(var i in survey.questions[x].options) opciones = opciones +'"'+survey.questions[x].options[i]+'",';
       var ind = parseInt(x)+1;
       opciones = opciones.slice(0,-1);
-      schemaObject = schemaObject + '"pregunta'+ind+'":{'+'"question'+ind+'"'+':{"type": "String","label": "'+survey.questions[x].name+'"},"options'+ind+'":{"type": "String","allowedValues": ['+opciones+'],"label": "Respuesta"}},';
+      schemaObject = schemaObject + '"question'+ind+'"'+':{"type": "String","allowedValues": ['+opciones+'],"label": "'+survey.questions[x].name+'"},';
 
     }
     schemaObject = schemaObject.slice(0, -1);
@@ -74,6 +74,6 @@ Meteor.methods({
     var jsonSchema = new JSONSchema(object);
     var simpleSchema = jsonSchema.toSimpleSchema();
 
-    return simpleSchema;
+    return schemaObject;
   }
 });
