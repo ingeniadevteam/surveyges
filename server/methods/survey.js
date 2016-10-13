@@ -36,6 +36,12 @@ Meteor.methods({
     }
 
   },
+  submitSurvey:function(answers){
+
+    console.log('submitted...');
+    for(var i in answers)
+    console.log('answer: '+answers[i]);
+  },
   surveyEdit: function(survey, id){
 
     //remove nulls from list of questions
@@ -61,11 +67,17 @@ Meteor.methods({
     for(var x in survey.questions){
 
       var opciones = ''
-      for(var i in survey.questions[x].options) opciones = opciones +'"'+survey.questions[x].options[i]+'",';
+      var opcionesObject = '[';
+      for(var i in survey.questions[x].options){
+        opciones = opciones +'"'+survey.questions[x].options[i]+'",';
+        opcionesObject = opcionesObject + '{"label":"'+survey.questions[x].options[i]+'","value":"'+survey.questions[x].options[i]+'"},';
+      }
       var ind = parseInt(x)+1;
       opciones = opciones.slice(0,-1);
-      schemaObject = schemaObject + '"question'+ind+'"'+':{"type": "String","allowedValues": ['+opciones+'],"label": "'+survey.questions[x].name+'"},';
-
+      opcionesObject = opcionesObject.slice(0,-1);
+      opcionesObject = opcionesObject +']';
+      console.log(opcionesObject);
+      schemaObject = schemaObject + '"question'+ind+'"'+':{"type": "String","allowedValues": ['+opciones+'],"autoform": {"options":'+opcionesObject+'},"label":"'+survey.questions[x].name+'"},';
     }
     schemaObject = schemaObject.slice(0, -1);
     schemaObject = schemaObject + '}';

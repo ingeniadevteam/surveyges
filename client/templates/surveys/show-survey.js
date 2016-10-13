@@ -18,12 +18,8 @@ Template.surveyShow.helpers({
     //return this._id;
   var schemaString = Schemas.findOne({survey: this._id});
 
-  var object = JSON.parse(schemaString.schema);
-  var jsonSchema = new JSONSchema(object);
-  var simpleSchema = jsonSchema.toSimpleSchema();
-  console.log(simpleSchema);
-  return simpleSchema;
-
+  var object = JSON.parse(schemaString.schema);  
+  return new SimpleSchema(object);
   }
 });
 
