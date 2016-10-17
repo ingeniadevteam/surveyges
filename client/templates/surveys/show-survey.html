@@ -1,4 +1,12 @@
 <template name="surveyShow">
   <h1>{{name}}</h1>
-  {{> quickForm id="demo" schema=getSchema type="method" meteormethod="submitSurvey"}}
+  {{#autoForm id="submitSurvey" schema=getSchema type="method" meteormethod="submitSurvey"}}
+    <fieldset>
+      {{#each afFieldNames}}
+        {{> afQuickField name=this.name}}
+      {{/each}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    <a class="btn btn-danger">Volver</a>
+  {{/autoForm}}
 </template>

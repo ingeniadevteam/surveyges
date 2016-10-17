@@ -1,3 +1,23 @@
 <template name="showQuestions">
-  <div>Hey</div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#Identificador</th>
+        {{#each getQuestions}}
+          <th>{{this}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this}}
+        <tr>
+        <td>{{_id}}</td>
+        {{#each answers}}
+          <td>{{this}}</td>
+        {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </template>

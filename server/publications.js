@@ -7,7 +7,7 @@ Meteor.publish('surveys', function() {
 });
 
 Meteor.publish('answers', function() {
-  return Surveys.find();
+  return Answers.find();
 });
 
 Meteor.publish('schemas', function() {

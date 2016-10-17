@@ -3,47 +3,55 @@ Meteor.methods({
     console.log(answer);
     var test = JSON.stringify(answer);
     console.log(test);
-
     Answers.insert(answer);
   },
   surveyAdd:function(survey){
-
+    console.log(survey);
     //survey.schema = new SimpleSchema(schem);
     //for(var x in survey.questions) Questions.insert(survey.questions[x])
-
     var enc = Surveys.insert(survey);
-    var s = Meteor.call('createSchema', survey);
-    console.log(s);
-    var insSchema = {
-      survey: enc,
-      schema: s
+    if(survey.questions){
+      var s = Meteor.call('createSchema', survey, enc);
+      console.log(s);
+      var insSchema = {
+        survey: enc,
+        schema: s
+      }
+      Schemas.insert(insSchema);
+      console.log('Encuesta insertada con preguntas');
+    }else{
+    console.log('Encuesta insertada sin preguntas');
     }
-
-    Schemas.insert(insSchema);
-    console.log('Encuesta insertada');
-
 
   },
   surveyDelete: function(survey){
 
     var exists = Surveys.findOne({ _id: survey});
-
     if (exists) {
       Surveys.remove(exists);
       console.log("Encuesta borrada: "+survey);
     } else {
       throw new Meteor.Error("La encuesta no existe");
     }
-
   },
   submitSurvey:function(answers){
 
-    console.log('submitted...');
-    for(var i in answers)
-    console.log('answer: '+answers[i]);
+    console.log(answers);
+    var arr = Object.values(answers);
+    var survey = arr[0];
+    var ans = arr.slice(1);
+
+    console.log('encuesta: '+survey);
+    console.log('answer: '+ans);
+    var ob = {
+      survey:survey,
+      answers:ans
+    }
+
+    console.log('submitted answer... '+Answers.insert(ob));
+
   },
   surveyEdit: function(survey, id){
-
     //remove nulls from list of questions
     for (var i in survey['$set'].questions){
 
@@ -51,19 +59,23 @@ Meteor.methods({
         survey['$set'].questions.splice(i,1);
       }
     }
-
+    if(survey['$set'].questions){
+       var s = Meteor.call('createSchema', survey['$set'], id);
+       Schemas.update({survey: id},{$set:{schema: s}});
+    }
     var exists = Surveys.findOne({ _id: id});
-
     if (exists) {
       Surveys.update(id, survey);
     } else {
       throw new Meteor.Error("La encuesta no existe");
     }
+    console.log('Encuesta Modificada: '+id);
   },
-  createSchema: function(survey){
-
+  createSchema: function(survey, enc){
     //JSON CREATION
-    var schemaObject = '{';
+    //"allowedValues":["'+enc+'"],"autoform": {"options":[{"label":"'+enc+'","value":"'+enc+'"}]}
+
+    var schemaObject = '{"id":{"type":"String","defaultValue":"'+enc+'","autoform":{"type":"hidden"}},';
     for(var x in survey.questions){
 
       var opciones = ''
@@ -81,11 +93,6 @@ Meteor.methods({
     }
     schemaObject = schemaObject.slice(0, -1);
     schemaObject = schemaObject + '}';
-
-    var object = JSON.parse(schemaObject);
-    var jsonSchema = new JSONSchema(object);
-    var simpleSchema = jsonSchema.toSimpleSchema();
-
     return schemaObject;
   }
 });

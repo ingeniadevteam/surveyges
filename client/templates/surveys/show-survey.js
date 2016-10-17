@@ -15,22 +15,18 @@ Template.surveyShow.helpers({
     });
   },
   getSchema:function(){
-    //return this._id;
   var schemaString = Schemas.findOne({survey: this._id});
-
-  var object = JSON.parse(schemaString.schema);  
+  var object = JSON.parse(schemaString.schema);
   return new SimpleSchema(object);
   }
 });
 
 
 AutoForm.addHooks('submitSurvey', {
-  // Called when any submit operation succeeds
+
   onSuccess: (formType, result) => {
-    //Alert('success', 'success');
     Router.go('/');
    },
-   // Called when any submit operation fails
    onError: (formType, error) => {
      if (error.hasOwnProperty('reason')) {
        console.log(error.reason);
