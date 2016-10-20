@@ -18,3 +18,19 @@ Una vez instalado meteor, para ejecutar la app:
 
 --> cd surveyges
 --> meteor
+
+
+##EJECUCIÓN DEL PROYECTO CON PARÁMETROS
+
+Al usar login de Google, se precisa el paso de claves mediante parametro, para ejecutar:
+
+--> meteor --settings "parametros.json"
+
+donde parametros.json, es el fichero de credenciales de google:
+
+```
+{
+  "GOOGLE_CLIENT_ID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "GOOGLE_SECRET": "xxxxxxxxxxxxxxx"
+}
+```

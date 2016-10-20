@@ -15,7 +15,6 @@ Template.surveysList.helpers({
               label: 'Acciones',
               sortable: false,
               fn: function (id) {
-                console.log("ver encuesta");
                 return new Spacebars.SafeString('<a href="/encuesta/'+id+'/mostrar" class="btn btn-primary" enabled>Ver Encuesta</a>'+
                                                 '    <a href="/encuesta/'+id+'/editar" class="btn btn-success" enabled>Editar Encuesta</a>'+
                                                 '    <a href="/encuesta/'+id+'/respuestas" class="btn btn-warning" enabled>Ver Respuestas</a>' +
