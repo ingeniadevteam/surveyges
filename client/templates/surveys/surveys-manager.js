@@ -15,10 +15,10 @@ Template.surveysList.helpers({
               label: 'Acciones',
               sortable: false,
               fn: function (id) {
-                return new Spacebars.SafeString('<a href="/encuesta/'+id+'/mostrar" class="btn btn-primary" enabled>Ver Encuesta</a>'+
-                                                '    <a href="/encuesta/'+id+'/editar" class="btn btn-success" enabled>Editar Encuesta</a>'+
-                                                '    <a href="/encuesta/'+id+'/respuestas" class="btn btn-warning" enabled>Ver Respuestas</a>' +
-                                                '    <a href="#" id="'+id+'" name="remove" class="btn btn-danger" enabled>Borrar Encuesta</a>');
+                return new Spacebars.SafeString('<a href="/encuesta/'+id+'/mostrar" title="Mostrar Encuenta" class="glyphicon glyphicon-file" enabled></a>'+
+                                                '    <a href="/encuesta/'+id+'/editar" title="Editar Encuenta" class="glyphicon glyphicon-pencil" enabled></a>'+
+                                                '    <a href="/encuesta/'+id+'/respuestas" title="Ver Respuestas" class="glyphicon glyphicon-list" enabled></a>' +
+                                                '    <a href="#" id="'+id+'" name="remove" title="Borrar Encuesta" class="glyphicon glyphicon-trash" enabled></a>');
               }
             }
           ]

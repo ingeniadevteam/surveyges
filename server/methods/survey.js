@@ -12,7 +12,7 @@ Meteor.methods({
     var enc = Surveys.insert(survey);
 
     const user = Meteor.users.findOne(Meteor.userId());
-    
+
     SurveyGesUsers.update({email:user.services.google.email},{$push: {allowedSurveys: enc}});
 
     if(survey.questions){
@@ -33,6 +33,11 @@ Meteor.methods({
     var exists = Surveys.findOne({ _id: survey});
     if (exists) {
       Surveys.remove(exists);
+
+      const user = Meteor.users.findOne(Meteor.userId());
+      SurveyGesUsers.update({email:user.services.google.email},{$pull: {allowedSurveys: exists._id}});
+      Schemas.remove({survey:exists._id});
+
       console.log("Encuesta borrada: "+survey);
     } else {
       throw new Meteor.Error("La encuesta no existe");
@@ -93,7 +98,7 @@ Meteor.methods({
       opcionesObject = opcionesObject.slice(0,-1);
       opcionesObject = opcionesObject +']';
       console.log(opcionesObject);
-      schemaObject = schemaObject + '"question'+ind+'"'+':{"type": "String","allowedValues": ['+opciones+'],"autoform": {"options":'+opcionesObject+'},"label":"'+survey.questions[x].name+'"},';
+      schemaObject = schemaObject + '"question'+ind+'"'+':{"type": "String","allowedValues": ['+opciones+'],"autoform": {"options":'+opcionesObject+', "firstOption":"(Seleccionar Una)"},"label":"'+survey.questions[x].name+'"},';
     }
     schemaObject = schemaObject.slice(0, -1);
     schemaObject = schemaObject + '}';
