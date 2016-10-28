@@ -27,6 +27,7 @@ Meteor.methods({
     }else{
     console.log('Encuesta insertada sin preguntas');
     }
+    
   },
   surveyDelete: function(survey){
 

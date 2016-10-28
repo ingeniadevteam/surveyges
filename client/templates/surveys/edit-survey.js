@@ -1,5 +1,5 @@
 Template.surveyEdit.events({
-  'click .btn-danger': function(event, template){
+  'click .btn-default': function(event, template){
       Router.go('/');
     }
 });
