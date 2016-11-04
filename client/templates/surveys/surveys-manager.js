@@ -30,7 +30,7 @@ Template.surveysList.helpers({
       }
   }
 });
-//<a href="/encuesta/'+id+'/mostrar" title="Mostrar Encuenta" class="btn btn-default" enabled>
+
 
 
 Template.surveysList.events({
@@ -55,7 +55,7 @@ Template.surveysList.events({
        Router.go('surveyShow', {_id : event.target.id});
      }
      if(event.target.name == "edit"){
-       Router.go('surveyEdit', {_id : event.target.id});       
+       Router.go('surveyEdit', {_id : event.target.id});
      }
   }
 });

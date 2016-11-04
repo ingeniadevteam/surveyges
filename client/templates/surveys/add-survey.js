@@ -1,21 +1,12 @@
 Template.surveyAdd.events({
   'click .btn-danger': function(event, template){
-      Router.go('/');
-    },
-
-  /*
-  'click #add': function(event){
       event.preventDefault();
-      console.log('aqui');
-
-      $('#questionModal').modal('show');
-  }
-  */
+      Router.go('/');
+    }
 });
 
-AutoForm.addHooks('submitSurvey', {
-
-  onSuccess: (formType, result) => {
-    console.log(formType);
+AutoForm.addHooks('addSurveyForm', {
+  onSuccess: function(formType, result){
+    console.log(this.insertDoc);
    }
 });

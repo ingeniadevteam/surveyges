@@ -10,7 +10,6 @@ Meteor.methods({
     //survey.schema = new SimpleSchema(schem);
     //for(var x in survey.questions) Questions.insert(survey.questions[x])
     var enc = Surveys.insert(survey);
-
     const user = Meteor.users.findOne(Meteor.userId());
 
     SurveyGesUsers.update({email:user.services.google.email},{$push: {allowedSurveys: enc}});
@@ -27,7 +26,6 @@ Meteor.methods({
     }else{
     console.log('Encuesta insertada sin preguntas');
     }
-    
   },
   surveyDelete: function(survey){
 
