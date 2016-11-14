@@ -6,9 +6,9 @@ Meteor.methods({
     Answers.insert(answer);
   },
   surveyAdd:function(survey){
-    console.log(survey);
-    //survey.schema = new SimpleSchema(schem);
-    //for(var x in survey.questions) Questions.insert(survey.questions[x])
+
+
+
     var enc = Surveys.insert(survey);
     const user = Meteor.users.findOne(Meteor.userId());
 
@@ -97,7 +97,9 @@ Meteor.methods({
       opcionesObject = opcionesObject.slice(0,-1);
       opcionesObject = opcionesObject +']';
       console.log(opcionesObject);
-      schemaObject = schemaObject + '"question'+ind+'"'+':{"type": "String","allowedValues": ['+opciones+'],"autoform": {"options":'+opcionesObject+', "firstOption":"(Seleccionar Una)"},"label":"'+survey.questions[x].name+'"},';
+
+
+      schemaObject = schemaObject + '"question'+ind+'"'+':{"type": "String","allowedValues": ['+opciones+'],"autoform": {"type":"'+survey.questions[x].style+'","options":'+opcionesObject+', "firstOption":"(Seleccionar Una)"},"label":"'+survey.questions[x].name+'"},';
     }
     schemaObject = schemaObject.slice(0, -1);
     schemaObject = schemaObject + '}';
